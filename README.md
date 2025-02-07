@@ -1,6 +1,4 @@
-# klipper-toolchanger
-
-An assortment of Klipper extensions that I have made while working on [Tapchanger](https://github.com/viesturz/tapchanger)
+# klipper-toolchanger Easy Install
 
 # Installation
 
@@ -20,7 +18,6 @@ origin: https://github.com/viesturz/klipper-toolchanger.git
 managed_services: klipper
 primary_branch: main
 ```
-Add the [macros.cfg](/macros.cfg) to your printer config.
 
 ## Updates that add new files
 
