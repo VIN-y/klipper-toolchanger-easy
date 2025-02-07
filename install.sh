@@ -1,7 +1,7 @@
 #!/bin/bash
 
 KLIPPER_PATH="${HOME}/klipper"
-INSTALL_PATH=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+INSTALL_PATH="${HOME}/klipper-toolchanger-easy"
 CONFIG_PATH="${HOME}/printer_data/config"
 
 set -eu
