@@ -1,7 +1,8 @@
 #!/bin/bash
 
 KLIPPER_PATH="${HOME}/klipper"
-INSTALL_PATH="${HOME}/klipper-toolchanger"
+INSTALL_PATH=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+CONFIG_PATH="${HOME}/printer_data/config"
 
 set -eu
 export LC_ALL=C
@@ -44,6 +45,12 @@ function link_extension {
     for file in "${INSTALL_PATH}"/klipper/extras/*.py; do ln -sfn "${file}" "${KLIPPER_PATH}/klippy/extras/"; done
 }
 
+function link_config {
+    echo "[INSTALL] Linking config to Klipper..."
+    mkdir -p "${CONFIG_PATH}/stealthchanger/"
+    for file in "${INSTALL_PATH}"/examples/stealthchanger/*.cfg; do ln -sfn "${file}" "${CONFIG_PATH}/stealthchanger/"; done
+}
+
 function restart_klipper {
     echo "[POST-INSTALL] Restarting Klipper..."
     sudo systemctl restart klipper
@@ -57,4 +64,5 @@ printf "======================================\n\n"
 preflight_checks
 check_download
 link_extension
+link_config
 restart_klipper
