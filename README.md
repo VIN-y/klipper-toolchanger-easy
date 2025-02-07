@@ -10,9 +10,11 @@ To install this plugin, run the installation script using the following command 
 
 This script does the following:
 - symlinks the needed Python files into `klipper/klippy/extras`
-- symlinks the gcode macros in `examples/stealthchanger` to `~/printer_data/config/stealthchanger/toolchanger`
+- symlinks the gcode macros to `~/printer_data/config/stealthchanger/toolchanger`
 - copies some example tools into `~/printer_data/config/stealthchanger/tools`
-- copies user editible config into ~/printer_data/config/stealthchanger`
+- copies user editible config into `~/printer_data/config/stealthchanger`
+
+Running `install.sh` multiple times is a safe opearation, provided you follow the instructions below about configuration.
 ```
 wget -O - https://raw.githubusercontent.com/jwellman80/klipper-toolchanger-easy/refs/heads/main/install.sh | bash
 ```
