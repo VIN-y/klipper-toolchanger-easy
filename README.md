@@ -24,7 +24,7 @@ Add the following to your `printer.cfg`
 [include stealthchanger/toolchanger-include.cfg]
 ```
 
-Then, add the following to your `moonraker.conf` to enable automatic updates:
+Optional, but recommended, add the following to your `moonraker.conf` to enable automatic updates:
 ```
 [update_manager klipper-toolchanger-easy]
 type: git_repo
