@@ -13,8 +13,8 @@ Then, add the following to your moonraker.conf to enable automatic updates:
 [update_manager klipper-toolchanger]
 type: git_repo
 channel: dev
-path: ~/klipper-toolchanger
-origin: https://github.com/viesturz/klipper-toolchanger.git
+path: ~/klipper-toolchanger-easy
+origin: https://github.com/jwellman80/klipper-toolchanger-easy.git
 managed_services: klipper
 primary_branch: main
 ```
