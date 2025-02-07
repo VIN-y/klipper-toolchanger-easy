@@ -18,7 +18,7 @@ Add the following to your `printer.cfg`
 
 Then, add the following to your `moonraker.conf` to enable automatic updates:
 ```
-[update_manager klipper-toolchanger]
+[update_manager klipper-toolchanger-easy]
 type: git_repo
 channel: dev
 path: ~/klipper-toolchanger-easy
@@ -32,7 +32,7 @@ primary_branch: main
 Note that if an update has new klipper files, they **will not** be automatically installed into Klipper.
 You will need to run the intall script manualy to add them:
 ```commandline
-bash ~/klipper-toolchanger/install.sh
+bash ~/klipper-toolchanger-easy/install.sh
 ```
 
 # VERY BASIC CONFIGURATION
