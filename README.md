@@ -7,6 +7,12 @@ Much of the documentation for StealthChanger still applies (except the Installat
 # Installation
 
 To install this plugin, run the installation script using the following command over SSH. This script will download this GitHub repository to your RaspberryPi home directory, and symlink the files in the Klipper extra folder.  It will also create copies of the user editable configuration and populate some example tools.  
+
+This script does the following:
+- symlinks the needed Python files into `klipper/klippy/extras`
+- symlinks the gcode macros in `examples/stealthchanger` to `~/printer_data/config/stealthchanger/toolchanger`
+- copies some example tools into `~/printer_data/config/stealthchanger/tools`
+- copies user editible config into ~/printer_data/config/stealthchanger`
 ```
 wget -O - https://raw.githubusercontent.com/jwellman80/klipper-toolchanger-easy/refs/heads/main/install.sh | bash
 ```
@@ -48,6 +54,9 @@ Tool configs must be named Tx.cfg (T0.cfg, T1.cfg, etc)
 Follow the examples in the `example_T0.cfg` and `example_T1.cfg`.  The main difference between the tools is that T0 has a z_offset and other tools will not.  T1 and up will have gcode_offsets set and T0 will not.  Other than that the configuration between T0 and other tools is very similar.  
 
 When starting up you will need a tool on the shuttle or Klipper will shut down.  You should always home, Quad Gantry Level, and bed mesh with T0.  
+
+Highly recommend that you DO NOT EDIT the files in `~/printer_data/config/stealthchanger/toolchanger`
+If you need to modify or config something in those files use the `~/printer_data/config/stealthchanger/toolchanger-config.cfg` file to override the macro or the setting in the macro.  `toolchanger-config.cfg` has examples of how this is accomplished. 
 
 # Components
 
