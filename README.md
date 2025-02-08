@@ -1,8 +1,10 @@
 # klipper-toolchanger Easy Install
-
+## Please Read this before starting!
 The purpose of (yet another) fork of the Viesturz/klipper-toolchanger repo is to attempt to simplify the installation for StealthChanger users.  This repo combines the configuration, macros, and Python into a single repo.  It also outlines patterns for overriding configuration to ease installation and allow easier updates. 
 
-Much of the documentation for StealthChanger still applies (except the Installation portion) https://github.com/DraftShift/StealthChanger/wiki
+All of the documentation for StealthChanger still applies and should be what you're following (except the Installation portion) https://github.com/DraftShift/StealthChanger/wiki
+
+**This assumes you have a WORKING PRINTER and configuration**
 
 # Installation
 
@@ -60,10 +62,36 @@ When starting up you will need a tool on the shuttle or Klipper will shut down. 
 Highly recommend that you DO NOT EDIT the files in `~/printer_data/config/stealthchanger/toolchanger`
 If you need to modify or config something in those files use the `~/printer_data/config/stealthchanger/toolchanger-config.cfg` file to override the macro or the setting in the macro.  `toolchanger-config.cfg` has examples of how this is accomplished. 
 
-# Components
+# Print_Start Macro
+Edit your existing print start macro to have the following: 
 
-* [Multi fan](/multi_fan.md) - multiple primary part fans.
-* [Toolchanger](/toolchanger.md) - tool management support.
-* [Tool probe](/tool_probe.md) - per tool Z probe.
-* [Rounded path](/rounded_path.md) - rounds the travel path corners for fast non-print moves.
-* [Tools calibrate](/tools_calibrate.md) - support for contact based XYZ offset calibration probes.
+Top of `print_start` macro
+```
+    {% set TOOL = params.TOOL | default(-1)| int %}
+    M117 Initializing...
+    INITIALIZE_TOOLCHANGER
+    STOP_TOOL_PROBE_CRASH_DETECTION
+    G28
+    T0
+    QUAD_GANTRY_LEVEL
+    G28 Z
+```
+
+Bottom of `print_start` macro:
+```
+    {% if TOOL >= 0 %}
+        M104 T0 S0 ; shutdown T0.  If it's up first it will be heated below.
+        T{params.TOOL}
+        {% set initialToolTemp = 'T' ~ params.TOOL|string ~ '_TEMP' %}
+        M117 Waiting on T{params.TOOL} S{params[initialToolTemp]}C
+        #M109 T{params.TOOL} S{params[initialToolTemp]}
+        M109 S{params[initialToolTemp]}
+    {% else %}
+        M109 S{EXTRUDER}
+    {% endif %}
+
+    START_TOOL_PROBE_CRASH_DETECTION
+```
+
+Follow the Slicer configuration in the DraftShift Design Wiki:
+https://github.com/DraftShift/StealthChanger/wiki/Slicers
