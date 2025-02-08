@@ -48,7 +48,7 @@ function link_extension {
 function link_config {
     echo "[INSTALL] Linking config to Klipper..."
     mkdir -p "${CONFIG_PATH}/stealthchanger/toolchanger"
-    mkdir -p "${CONFIG_PATH}/stealthchanger/toolchanger/tools"
+    mkdir -p "${CONFIG_PATH}/stealthchanger/tools"
     
     for file in "${INSTALL_PATH}"/stealthchanger/*.cfg; do ln -sfn "${file}" "${CONFIG_PATH}/stealthchanger/toolchanger/"; done
 
