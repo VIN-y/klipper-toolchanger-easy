@@ -84,7 +84,6 @@ Bottom of `print_start` macro:
         T{params.TOOL}
         {% set initialToolTemp = 'T' ~ params.TOOL|string ~ '_TEMP' %}
         M117 Waiting on T{params.TOOL} S{params[initialToolTemp]}C
-        #M109 T{params.TOOL} S{params[initialToolTemp]}
         M109 S{params[initialToolTemp]}
     {% else %}
         M109 S{EXTRUDER}
