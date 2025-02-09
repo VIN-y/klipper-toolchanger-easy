@@ -68,7 +68,7 @@ Edit your existing print start macro to have the following:
 Top of `print_start` macro
 ```
     {% set TOOL = params.TOOL | default(-1)| int %}
-    {% set EXTRUDER = params.EXTRUDER | default(0) | int %}
+    {% set TOOL_TEMP = params.TOOL_TEMP | default(0) | int %}
 
     M117 Initializing...
     INITIALIZE_TOOLCHANGER
@@ -88,7 +88,7 @@ Bottom of `print_start` macro:
         M117 Waiting on T{params.TOOL} S{params[initialToolTemp]}C
         M109 S{params[initialToolTemp]}
     {% else %}
-        M109 S{EXTRUDER}
+        M109 S{TOOL_TEMP}
     {% endif %}
 
     START_TOOL_PROBE_CRASH_DETECTION
