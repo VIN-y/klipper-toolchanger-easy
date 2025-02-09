@@ -69,12 +69,19 @@ Top of `print_start` macro
 ```
     {% set TOOL = params.TOOL | default(-1)| int %}
     {% set TOOL_TEMP = params.TOOL_TEMP | default(0) | int %}
-
+    {% set BED_TEMP = params.BED_TEMP | default(0) | int %}
     M117 Initializing...
     INITIALIZE_TOOLCHANGER
     STOP_TOOL_PROBE_CRASH_DETECTION
+
+    M117 Heating Bed
+    M190 S{BED_TEMP}
+
+    M117 Homing
     G28
     T0
+
+    M117 Quad Gantry Level
     QUAD_GANTRY_LEVEL
     G28 Z
 ```
