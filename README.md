@@ -68,6 +68,8 @@ Edit your existing print start macro to have the following:
 Top of `print_start` macro
 ```
     {% set TOOL = params.TOOL | default(-1)| int %}
+    {% set EXTRUDER = params.EXTRUDER | default(0) | int %}
+
     M117 Initializing...
     INITIALIZE_TOOLCHANGER
     STOP_TOOL_PROBE_CRASH_DETECTION
