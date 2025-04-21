@@ -20,6 +20,8 @@ With that in mind, the following are rules that are to be strictly followed for 
    
    - Configuration sections and their parameters explained
    
-   - Commands and their parameters explained Optionally.
+   - Commands and their parameters explained
 
-5. Example configuration file..
+Optionally.
+
+5. Example configuration file.
